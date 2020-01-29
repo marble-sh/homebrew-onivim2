@@ -13,5 +13,8 @@ Or install via URL (which will not receive updates):
 brew cask install https://raw.githubusercontent.com/marblenix/homebrew-onivim2/master/Formula/onivim2.rb
 ```
 
+## How do I upgrade these formulae?
+`brew cask upgrade --force onivim2`.
+
 ## Documentation
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
