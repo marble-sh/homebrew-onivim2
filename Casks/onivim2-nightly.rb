@@ -11,7 +11,7 @@ end
 class OniVimDownloadStrategy < CurlDownloadStrategy
   def initialize(url, name, version, **meta)
     super
-    @cached_location = Pathname.new("#{HOMEBREW_CACHE}/downloads/OniVim2-stable.app")
+    @cached_location = Pathname.new("#{HOMEBREW_CACHE}/downloads/OniVim2-nightly.app")
     @symlink_location = Pathname.new("#{@cache}/#{name}.app")
     @temporary_path = Pathname.new("#{@cached_location}.incomplete")
   end
@@ -20,12 +20,12 @@ end
 # Defined in the website js
 FIREBASE_API_KEY = 'AIzaSyDxflsfyd2gloxgWJ-GFtPM46tz-TtOXh8'
 
-cask 'onivim2' do
+cask 'onivim2-nightly' do
   app 'OniVim2.app'
-  name 'OniVim2'
-  version '0.5.0'
-  sha256 'e52ebf6beecf753f8b5cbbb609cb500450931f9567e957e3bd07a9ef00bfb3eb'
-  conflicts_with cask: 'onivim2-nightly'
+  name 'OniVim2-nightly'
+  version :latest
+  sha256 :no_check
+  conflicts_with cask: 'onivim2'
   homepage 'https://v2.onivim.io/'
 
   # Verify license key
@@ -44,5 +44,5 @@ cask 'onivim2' do
   custom_token_response = Net::HTTP.post_form(custom_token_url, params)
   id_token = JSON.parse(custom_token_response.body)['idToken']
 
-  url "https://v2.onivim.io/downloads/Onivim2.dmg?channel=stable&token=#{id_token}", using: OniVimDownloadStrategy
+  url "https://v2.onivim.io/downloads/Onivim2.dmg?channel=master&token=#{id_token}", using: OniVimDownloadStrategy
 end

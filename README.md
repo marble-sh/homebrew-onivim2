@@ -5,16 +5,21 @@
 export HOMEBREW_ONIVIM_SERIAL="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 
 ## How do I install these formulae?
-`brew tap marblenix/onivim2` and then `brew cask install onivim2`.
+`brew tap marblenix/onivim2`
 
-Or install via URL (which will not receive updates):
+### Stable
+`brew cask install onivim2`
 
-```
-brew cask install https://raw.githubusercontent.com/marblenix/homebrew-onivim2/master/Casks/onivim2.rb
-```
+### Nightly
+`brew cask install onivim2-nightly`
 
 ## How do I upgrade these formulae?
-`brew upgrade --cask --force onivim2`.
+
+### Stable
+`brew update; brew upgrade --casks onivim2`.
+
+### Nightly
+`brew upgrade --cask --force onivim2-nightly`.
 
 ## Documentation
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
