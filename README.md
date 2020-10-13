@@ -10,7 +10,7 @@ export HOMEBREW_ONIVIM_SERIAL="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 Or install via URL (which will not receive updates):
 
 ```
-brew cask install https://raw.githubusercontent.com/marblenix/homebrew-onivim2/master/Formula/onivim2.rb
+brew cask install https://raw.githubusercontent.com/marblenix/homebrew-onivim2/master/Casks/onivim2.rb
 ```
 
 ## How do I upgrade these formulae?
