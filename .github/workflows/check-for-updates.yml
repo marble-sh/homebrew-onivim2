@@ -1,0 +1,61 @@
+name: check for new stable version
+
+on:
+  schedule:
+    - cron: 30 3 * * *
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: auth 1
+        id: token
+        run: curl -sL "https://v2.onivim.io/auth/licenseKey?licenseKey=${ONIVIM_TOKEN}" -o /tmp/key.json
+        env:
+          ONIVIM_TOKEN: ${{ secrets.ONIVIM_TOKEN }}
+
+      - name: auth 2
+        id: idToken
+        run: |
+          token=$(jq -r '.token' /tmp/key.json)
+          echo '{"token":"'$token'","returnSecureToken":true}' >/tmp/payload.json
+          curl -sL "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key=${FIREBASE_API_KEY}" \
+            --header "Accept:\ application/json" \
+            --header "Content-Type:\ application/json" \
+            -d @/tmp/payload.json \
+            -o /tmp/customToken.json
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+
+      - name: getVersion
+        id: version
+        run: |
+          idToken=$(jq -r '.idToken' /tmp/customToken.json)
+          curl -sL "https://v2.onivim.io/api/getDownloads?channel=stable&token=$idToken" -o /tmp/downloads.json
+          version=$(jq -r '.version' /tmp/downloads.json)
+
+          if [[ "x$version" = "x" ]]; then
+            echo "Could not find a version" >&2
+            exit 1
+          fi
+          echo "::set-output name=stable::v${version}"
+
+      - name: Check if stable tag exists
+        uses: mukunku/tag-exists-action@v1.0.0
+        id: check_stable_tag
+        with:
+          tag: ${{ steps.version.outputs.stable }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a new issue for the release
+        if: ${{ !steps.check_stable_tag.outputs.exists }}
+        uses: JasonEtco/create-an-issue@v2
+        with:
+          filename: .github/out-of-date-template.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.stable }}
