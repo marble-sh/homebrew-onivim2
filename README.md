@@ -8,10 +8,10 @@ export HOMEBREW_ONIVIM_SERIAL="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 `brew tap marblenix/onivim2`
 
 ### Stable
-`brew cask install onivim2`
+`brew install --cask onivim2`
 
 ### Nightly
-`brew cask install onivim2-nightly`
+`brew install --cask onivim2-nightly`
 
 ## How do I upgrade these formulae?
 
