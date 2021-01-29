@@ -52,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create a new issue for the release
-        if: ${{ !steps.check_stable_tag.outputs.exists }}
+        if: ${{ steps.check_stable_tag.outputs.exists == 'false' }}
         uses: JasonEtco/create-an-issue@v2
         with:
           filename: .github/out-of-date-template.md
