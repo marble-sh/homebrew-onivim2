@@ -24,7 +24,7 @@ cask 'onivim2' do
   app 'OniVim2.app'
   name 'OniVim2'
   version '0.5.3'
-  sha256 '5ca4a7e697d29c8fffc5a1bafdb591742a81e2e3d0f4f6aadd06bf56f29dad4b'
+  sha256 '8caa44ace2b0ea2c0dcf2165cb44b1485f0d2147a297edc7d3bae2f21741eca7'
   conflicts_with cask: 'onivim2-nightly'
   homepage 'https://v2.onivim.io/'
 
