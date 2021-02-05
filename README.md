@@ -1,6 +1,8 @@
 # Homebrew tap for OniVim2
 [https://v2.onivim.io/](https://v2.onivim.io/)
 
+![Test Install](https://github.com/marblenix/homebrew-onivim2/workflows/Test%20Install/badge.svg)
+
 ## Prerequisites
 export HOMEBREW_ONIVIM_SERIAL="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 
