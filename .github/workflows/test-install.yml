@@ -1,0 +1,21 @@
+name: Test Install
+
+on:
+  schedule:
+    - cron: 15 0 * * *
+
+jobs:
+  test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        package: [onivim2, onivim2-nightly]
+    steps:
+    - name: Tap Repo
+      uses: izumin5210/action-homebrew-tap@v1
+      with:
+        tap: marblenix/homebrew-onivim2
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tap-token: ${{ secrets.TAP_GITHUB_TOKEN }}
+    - name: Install OniVim2
+      run: brew install ${{ matrix.package }}
