@@ -12,10 +12,6 @@ jobs:
         package: [onivim2, onivim2-nightly]
     steps:
     - name: Tap Repo
-      uses: izumin5210/action-homebrew-tap@v1
-      with:
-        tap: marblenix/homebrew-onivim2
-        token: ${{ secrets.GITHUB_TOKEN }}
-        tap-token: ${{ secrets.TAP_GITHUB_TOKEN }}
+      run: brew tap marblenix/homebrew-onivim2
     - name: Install OniVim2
       run: brew install ${{ matrix.package }}
