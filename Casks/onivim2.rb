@@ -23,8 +23,8 @@ FIREBASE_API_KEY = 'AIzaSyDxflsfyd2gloxgWJ-GFtPM46tz-TtOXh8'
 cask 'onivim2' do
   app 'OniVim2.app'
   name 'OniVim2'
-  version '0.5.3'
-  sha256 '8caa44ace2b0ea2c0dcf2165cb44b1485f0d2147a297edc7d3bae2f21741eca7'
+  version '0.5.4'
+  sha256 'e1725689c51d5636892f385e9de53b88005c0ed57c7b370c7f04c3f95d4961c3'
   conflicts_with cask: 'onivim2-nightly'
   homepage 'https://v2.onivim.io/'
 
