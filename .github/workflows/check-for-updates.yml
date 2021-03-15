@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
       - name: auth 1
         id: token
         run: curl -sL "https://v2.onivim.io/auth/licenseKey?licenseKey=${ONIVIM_TOKEN}" -o /tmp/key.json

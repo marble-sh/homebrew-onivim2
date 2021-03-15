@@ -3,8 +3,6 @@ name: Test Install
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
   schedule:
     - cron: 30 0 * * *
 
@@ -15,11 +13,11 @@ jobs:
       matrix:
         package: [onivim2, onivim2-nightly]
     steps:
-    - name: Tap Repo
-      run: brew tap --quiet marblenix/homebrew-onivim2
-      env:
-        HOMEBREW_ONIVIM_SERIAL: ${{ secrets.ONIVIM_TOKEN }}
-    - name: Install OniVim2
-      run: brew install --quiet ${{ matrix.package }}
-      env:
-        HOMEBREW_ONIVIM_SERIAL: ${{ secrets.ONIVIM_TOKEN }}
+      - name: Tap Repo
+        run: brew tap --quiet marblenix/homebrew-onivim2
+        env:
+          HOMEBREW_ONIVIM_SERIAL: ${{ secrets.ONIVIM_TOKEN }}
+      - name: Install OniVim2
+        run: brew install --quiet ${{ matrix.package }}
+        env:
+          HOMEBREW_ONIVIM_SERIAL: ${{ secrets.ONIVIM_TOKEN }}
