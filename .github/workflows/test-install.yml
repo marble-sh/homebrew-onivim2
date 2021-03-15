@@ -13,9 +13,6 @@ jobs:
       matrix:
         package: [onivim2, onivim2-nightly]
     steps:
-      # This can be removed when the macos-latest has a more up-to-date brew
-      - name: Update Brew
-        run: brew update --force
       - name: Tap Repo
         run: brew tap --quiet marblenix/homebrew-onivim2
         env:
