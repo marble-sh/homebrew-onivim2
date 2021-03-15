@@ -13,6 +13,8 @@ jobs:
       matrix:
         package: [onivim2, onivim2-nightly]
     steps:
+      - name: update homebrew
+        run: brew update
       - name: Tap Repo
         run: brew tap --quiet marblenix/homebrew-onivim2
         env:
