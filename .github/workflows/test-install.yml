@@ -14,10 +14,10 @@ jobs:
         package: [onivim2, onivim2-nightly]
     steps:
       - name: Tap Repo
-        run: brew tap --quiet marblenix/homebrew-onivim2
+        run: brew tap marblenix/homebrew-onivim2 > /dev/null
         env:
           HOMEBREW_ONIVIM_SERIAL: ${{ secrets.ONIVIM_TOKEN }}
       - name: Install OniVim2
-        run: brew install --quiet ${{ matrix.package }}
+        run: brew install ${{ matrix.package }} > /dev/null
         env:
           HOMEBREW_ONIVIM_SERIAL: ${{ secrets.ONIVIM_TOKEN }}
