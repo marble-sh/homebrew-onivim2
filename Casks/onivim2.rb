@@ -1,5 +1,5 @@
-VERSION = "0.5.3".freeze
-SHA_256 = "8caa44ace2b0ea2c0dcf2165cb44b1485f0d2147a297edc7d3bae2f21741eca7".freeze
+VERSION = "0.5.4".freeze
+SHA_256 = "e1725689c51d5636892f385e9de53b88005c0ed57c7b370c7f04c3f95d4961c3".freeze
 
 # Defined in the website js
 FIREBASE_API_KEY = "AIzaSyDxflsfyd2gloxgWJ-GFtPM46tz-TtOXh8".freeze
