@@ -49,6 +49,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout
+        if: ${{ steps.check_stable_tag.outputs.exists == 'false' }}
+        uses: actions/checkout@v2
+
       - name: Create a new issue for the release
         if: ${{ steps.check_stable_tag.outputs.exists == 'false' }}
         uses: JasonEtco/create-an-issue@v2
